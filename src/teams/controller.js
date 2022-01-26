@@ -155,22 +155,13 @@ const getTeams = async (req, res) => {
         let team_names= teams.map((team) => team.team_name)
         let coachResults= await pool.query(queries.getCoaches(team_names))
         let coaches= coachResults.rows
+        // let coaches= []
         let playerResults= await pool.query(queries.getPlayers(team_names))
         let players= playerResults.rows
         teams= teams.map((team) => {
             let team_name= team.team_name
-            team.coaches=[]
-            team.players= []
-            coaches.map((coach) => {
-                if(coach.team_name === team_name){
-                    team.coaches.push(coach.coach_id)
-                }
-            })
-            players.map((player) => {
-                if(player.team_name === team_name){
-                    team.players.push(player.player_id)
-                }
-            })
+            team.coaches_IDs= coaches.filter( coach => coach.team_name === team_name ).map( coach => coach.coach_id)
+            team.players_IDs= players.filter( player => player.team_name === team_name ).map( player => player.player_id)
             return team
         })
   
