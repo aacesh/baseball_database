@@ -155,7 +155,6 @@ const getTeams = async (req, res) => {
         let team_names= teams.map((team) => team.team_name)
         let coachResults= await pool.query(queries.getCoaches(team_names))
         let coaches= coachResults.rows
-        // let coaches= []
         let playerResults= await pool.query(queries.getPlayers(team_names))
         let players= playerResults.rows
         teams= teams.map((team) => {
@@ -165,7 +164,6 @@ const getTeams = async (req, res) => {
             return team
         })
   
-        
         let data = {
             success: true,
             data: { teams }
