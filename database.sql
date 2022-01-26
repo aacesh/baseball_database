@@ -89,9 +89,6 @@ CREATE TABLE games (
     save_pitcher VARCHAR(50)
     );
 
--- insert into games
-INSERT INTO games(home_team, visiting_team, date_of_game, winner, winning_pitcher, loosing_pitcher, save_pitcher)
-VALUES ('DeadEyes', 'DeadEyes1', DATE '2021-01-04', 'DeadEyes', 'ram', 'shyam');
 
 -- To create scores table
 CREATE TABLE scores ( 
@@ -146,6 +143,9 @@ VALUES ('Prakash', 'bidari', DATE '1995-07-08', 'kathmandu');
 INSERT INTO teams(team_name, city, division, league, manager_id)
 VALUES ('Dead eyes', 'kathmandu','A', 'champions', 2);
 
+-- insert into games
+INSERT INTO games(home_team, visiting_team, date_of_game, winner, winning_pitcher, loosing_pitcher, save_pitcher)
+VALUES ('DeadEyes', 'DeadEyes1', DATE '2021-01-04', 'DeadEyes', 'ram', 'shyam');
 
 
 -- insert into scores
