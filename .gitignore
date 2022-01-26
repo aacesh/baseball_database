@@ -1,0 +1,4 @@
+node_modules/
+score/
+test.js
+.env
