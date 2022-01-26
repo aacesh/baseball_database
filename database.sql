@@ -1,6 +1,7 @@
 -- To create database
 CREATE DATABASE baseball;
 
+----------------------- COMMANDS TO CREATE TABLE ------------------------------------
 
 -- To create players table
 CREATE TABLE players ( 
@@ -15,8 +16,6 @@ CREATE TABLE players (
     );
 
 
-
-
 -- To create coaches table
 CREATE TABLE coaches ( 
     personnel_id BIGSERIAL NOT NULL PRIMARY KEY,
@@ -26,9 +25,6 @@ CREATE TABLE coaches (
     place_of_birth VARCHAR(30) NOT NULL
     );
 
--- insert into coaches
-INSERT INTO coaches(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('simon', 'paudel', DATE '1996-07-08', 'dhangadi');
 
 
 -- To create managers table
@@ -41,10 +37,6 @@ CREATE TABLE managers (
     );
 
 
--- insert into managers
-INSERT INTO managers(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('simon', 'chaudhary', DATE '1993-07-08', 'pokhara');
-
 
 -- To create umpires table
 CREATE TABLE umpires ( 
@@ -56,9 +48,6 @@ CREATE TABLE umpires (
     );
 
 
--- insert into umpires
-INSERT INTO umpires(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('Prakash', 'bidari', DATE '1995-07-08', 'kathmandu');
 
 -- To create teams table
 CREATE TABLE teams ( 
@@ -69,9 +58,7 @@ CREATE TABLE teams (
     manager_id BIGINT NOT NULL REFERENCES manager(personnel_id)
     );
 
--- insert into teams
-INSERT INTO teams(team_name, city, division, league, manager_id)
-VALUES ('Dead eyes', 'kathmandu','A', 'champions', 2);
+
 
 
 -- To create teams coaches table
@@ -116,9 +103,7 @@ CREATE TABLE scores (
     PRIMARY KEY (team_name, game_id)
     );
 
--- insert into scores
-INSERT INTO scores(team_name, game_id, runs, hits, errors)
-VALUES ('DeadEyes', '1', 100, 20, 2);
+
 
 -- To create hits_by_player table
 CREATE TABLE hits_by_player ( 
@@ -131,12 +116,44 @@ CREATE TABLE hits_by_player (
     PRIMARY KEY (player_id, game_id)
     );
 
--- insert into hits by player
-INSERT INTO hits_by_player(singles, doubles, triples, home_runs, player_id, game_id)
-VALUES (10, 6, 3, 20, 2 , 1);
+
+-----------------------------COMMANDS TO INSERT INTO TABLES ----------------------------------------------
+
 
 -- insert into players
 INSERT INTO players(first_name, last_name, date_of_birth, place_of_birth, batting_orientation, batting_average)
 VALUES ('ram', 'paudel', DATE '1996-07-08', 'kathmandu', 'left', 10);
 
+
+-- insert into coaches
+INSERT INTO coaches(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('simon', 'paudel', DATE '1996-07-08', 'dhangadi');
+
+
+-- insert into managers
+INSERT INTO managers(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('simon', 'chaudhary', DATE '1993-07-08', 'pokhara');
+
+
+
+-- insert into umpires
+INSERT INTO umpires(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('Prakash', 'bidari', DATE '1995-07-08', 'kathmandu');
+
+
+
+-- insert into teams
+INSERT INTO teams(team_name, city, division, league, manager_id)
+VALUES ('Dead eyes', 'kathmandu','A', 'champions', 2);
+
+
+
+-- insert into scores
+INSERT INTO scores(team_name, game_id, runs, hits, errors)
+VALUES ('DeadEyes', '1', 100, 20, 2);
+
+
+-- insert into hits by player
+INSERT INTO hits_by_player(singles, doubles, triples, home_runs, player_id, game_id)
+VALUES (10, 6, 3, 20, 2 , 1);
 
