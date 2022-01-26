@@ -125,6 +125,9 @@ const getTeamByName = async (req, res) => {
     let teams= [team_name]
     try {
         let teamResults = await pool.query(queries.getTeamByName, [team_name])
+        if (teamResults.rowCount < 1) {
+            throw new Error(`Team ${team_name} does not exist in database`)
+        }
         let coachResults= await pool.query(queries.getCoaches(teams))
         let playerResults= await pool.query(queries.getPlayers(teams))
         let team = teamResults.rows[0]
